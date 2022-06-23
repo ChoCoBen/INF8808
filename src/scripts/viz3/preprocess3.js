@@ -36,12 +36,22 @@ export function getSkills (data) {
  */
 export function structureData (data, skills) {
   var newData = []
+  var skillLevels = ['Haut. Qualifié', 'Qualifié', 'Moins Qualifié']
+  var skillDetection = { 'Haut. Qualifié': 'Haut', Qualifié: '(Qual', 'Moins Qualifié': 'Moins' }
+
   skills.forEach(skill => {
-    var skillElement = { 'Genre de compétences': skill }
     var dataWithThisSkill = data.filter(element => element.Genre_de_competences.trim() === skill)
-    skillElement.pourcentages = calculatePercentage(dataWithThisSkill)
-    skillElement.déficit = calculateDeficit(dataWithThisSkill)
-    newData.push(skillElement)
+    var pourcentages = calculatePercentage(dataWithThisSkill)
+    var total = pourcentages['Haut. Qualifié'] + pourcentages.Qualifié + pourcentages['Moins Qualifié']
+    skillLevels.forEach(skillLevel => {
+      var skillElement = { 'Genre de compétences': skill }
+      var dataWithThisSkillLevel = dataWithThisSkill.filter(element => element.Niveau_de_competences.indexOf(skillDetection[skillLevel]) !== -1)
+      skillElement.déficit = calculateDeficit(dataWithThisSkillLevel)
+      skillElement.pourcentage = pourcentages[skillLevel] / total
+      skillElement.emploi_estimé = pourcentages[skillLevel]
+      skillElement.niveau_de_competences = skillLevel
+      newData.push(skillElement)
+    })
   })
   return newData
 }
@@ -76,6 +86,7 @@ export function calculatePercentage (dataWithOneSkill) {
  * @returns {string} the term that best defines the deficit
  */
 export function calculateDeficit (dataWithOneSkill) {
+  if (dataWithOneSkill.length === 0) { return 'Equilibre' }
   var deficit = 0
   var countNonPublished = 0
   dataWithOneSkill.forEach(element => {

@@ -37,7 +37,7 @@ export function appendGraphLabels (g) {
 export function drawXAxis (xScale, height) {
   d3.select('.x-axis')
     .attr('transform', 'translate( 0, ' + height + ')')
-    .call(d3.axisBottom(xScale).tickSizeOuter(0).tickArguments([5, '~s']))
+    .call(d3.axisBottom(xScale))
 }
 
 /**
@@ -47,5 +47,15 @@ export function drawXAxis (xScale, height) {
  */
 export function drawYAxis (yScale) {
   d3.select('.y-axis')
-    .call(d3.axisLeft(yScale).tickSizeOuter(0).tickArguments([5, '.0r']))
+    .call(d3.axisLeft(yScale))
+}
+
+/**
+ * Rotates the ticks on the X axis 45 degrees towards the left.
+ */
+export function rotateXTicks () {
+  d3.select('.x-axis')
+    .selectAll('text')
+    .attr('class', 'axis-text')
+    .attr('transform', 'rotate(-90)')
 }

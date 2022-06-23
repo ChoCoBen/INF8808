@@ -63,7 +63,7 @@ import * as viz3 from './scripts/viz3/viz3.js'
 
     d3.select('#button3')
       .on('click', () => {
-        viz3.build(g)
+        viz3.build(g, graphSize)
       })
   }
 })(d3)

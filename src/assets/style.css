@@ -42,3 +42,27 @@ h2 {
 svg {
     background-color: #ffffff;
 }
+
+.axis-text {
+    transform-origin: center;
+    transform-box: fill-box;
+    text-anchor: middle;
+}
+
+.axis path, .axis line {
+    stroke : #362023;
+}
+
+.axis text {
+    fill : #362023;
+}
+
+.d3-tip {
+    line-height: 1;
+    font-weight: bold;
+    padding: 12px;
+    background: rgba(54, 32, 35, 0.8);
+    color: #fff;
+    border-radius: 2px;
+    pointer-events: none;
+}
