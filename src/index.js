@@ -13,9 +13,9 @@ import * as viz3 from './scripts/viz3/viz3.js'
 
 (function (d3) {
   const margin = {
-    top: 120,
+    top: 220,
     right: 80,
-    bottom: 100,
+    bottom: 200,
     left: 80
   }
 
@@ -36,7 +36,7 @@ import * as viz3 from './scripts/viz3/viz3.js'
   function setSizing () {
     svgSize = {
       width: 1000,
-      height: 600
+      height: 800
     }
 
     graphSize = {
@@ -53,12 +53,12 @@ import * as viz3 from './scripts/viz3/viz3.js'
   function setClickHandler (g) {
     d3.select('#button1')
       .on('click', () => {
-        viz1.build(g)
+        viz1.build(g, graphSize)
       })
 
     d3.select('#button2')
       .on('click', () => {
-        viz2.build(g)
+        viz2.build(g, graphSize)
       })
 
     d3.select('#button3')
