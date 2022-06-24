@@ -15,17 +15,30 @@ export function appendAxes (g) {
  * Appends the labels for the the y axis and the title of the graph.
  *
  * @param {*} g The d3 Selection of the graph's g SVG element
+ * @param {number} width the width of the graph
+ * @param {number} height the height of the graph
  */
-export function appendGraphLabels (g) {
-  g.append('text')
-    .text("Pourcentage d'emplois par niveau de qualification")
-    .attr('class', 'y-axis-text')
-    .attr('font-size', 12)
+export function appendGraphLabels (g, width, height) {
+  var dy = -height / 2
+  var dx = width + 50
 
   g.append('text')
-    .text('Genre de compétences')
-    .attr('class', 'x-axis-text')
+    .text("Pourcentage d'emplois par niveau de qualification")
+    .attr('class', 'axis-title')
     .attr('font-size', 12)
+    .attr('transform', 'rotate(-90) translate(' + dy + ', -50)')
+
+  g.append('text')
+    .text('Genre de')
+    .attr('class', 'axis-title')
+    .attr('font-size', 12)
+    .attr('transform', 'translate(' + dx + ',' + (height - 5) + ')')
+
+  g.append('text')
+    .text('compétences')
+    .attr('class', 'axis-title')
+    .attr('font-size', 12)
+    .attr('transform', 'translate(' + dx + ',' + (height + 15) + ')')
 }
 
 /**
@@ -57,5 +70,9 @@ export function rotateXTicks () {
   d3.select('.x-axis')
     .selectAll('text')
     .attr('class', 'axis-text')
-    .attr('transform', 'rotate(-90)')
+    .attr('transform', function () {
+      var dy = -d3.select(this)._groups[0][0].__data__.length * 2.4
+      return 'rotate(-90) translate(' + dy + ',0)'
+    })
+    .style('font-weight', 'bold')
 }

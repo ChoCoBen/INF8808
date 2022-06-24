@@ -108,7 +108,27 @@ export function calculateDeficit (dataWithOneSkill) {
  */
 export function deficitScore (score) {
   if (score < -1.25) { return 'Déficit' }
-  if (score < -0.40) { return 'Léger Déficit' }
+  if (score < -0.50) { return 'Léger Déficit' }
   if (score < 0.40) { return 'Equilibre' }
   return 'Léger Surplus'
+}
+
+/**
+ * Give the percentage for the same skill level for the other year and for a given skill level
+ *
+ * @param {Array} skills the different skills
+ * @param {Array} data the data from 2021
+ * @returns {*} an object containing every percentage
+ */
+export function getCorrespondingPercentage (skills, data) {
+  var output = {}
+  skills.forEach(skill => {
+    data.forEach(element => {
+      console.log(element)
+      if (element['Genre de compétences'] === skill) {
+        output[skill] = element.pourcentage
+      }
+    })
+  })
+  return output
 }

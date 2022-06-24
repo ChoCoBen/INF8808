@@ -49,6 +49,13 @@ svg {
     text-anchor: middle;
 }
 
+.axis-title {
+    transform-origin: center;
+    transform-box: fill-box;
+    text-anchor: middle;
+    font-weight: bold;
+}
+
 .axis path, .axis line {
     stroke : #362023;
 }
@@ -65,4 +72,8 @@ svg {
     color: #fff;
     border-radius: 2px;
     pointer-events: none;
+}
+
+.titleTooltip {
+    color: gold
 }

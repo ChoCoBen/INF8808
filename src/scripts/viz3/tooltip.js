@@ -5,7 +5,11 @@
  * @returns {string} The tooltip contents
  */
 export function getContents (d) {
-  return 'bla'
+  var title = "<span class='titleTooltip'><b>Information supplémentaire</b></span><br><br>"
+  var nombre = "<span>Nombre d'emploi: " + d.emploi_estimé + '</span><br>'
+  var pourcentage = '<span>Pourcentage: ' + d.pourcentage.toFixed(2) + '</span><br>'
+  var deficit = '<span>Prévision de déficit: ' + d.déficit + '</span>'
+  return title + nombre + pourcentage + deficit
 }
 
 /**
@@ -16,7 +20,6 @@ export function getContents (d) {
 export function setCircleHoverHandler (tip) {
   d3.selectAll('circle')
     .on('mouseover', function (d) {
-      d3.select(this).style('opacity', 1)
       tip.show(d, this)
     })
     .on('mouseout', function () {
