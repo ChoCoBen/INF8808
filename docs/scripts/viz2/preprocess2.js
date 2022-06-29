@@ -1,4 +1,3 @@
-import { stack } from 'd3'
 
 /**
  * Removes all data that do not concern the whole of Quebec
@@ -14,8 +13,8 @@ export function filterRegion (data) {
 /**
  * Gets the list of the differents industries
  *
- * @param data2019
- * @param data2021
+ * @param {*} data2019 data for the 2019-2023 period
+ * @param {*} data2021 data for the 2021-2025 period
  * @returns {Array} The array containing the names of the industries
  */
 export function getIndustries (data2019, data2021) {
@@ -27,7 +26,6 @@ export function getIndustries (data2019, data2021) {
   const stack = []
 
   data2019.forEach((element) => {
-    // console.log(1 + (element.Taux_de_croissance_annuel_moyen_2019_2023 / 100))
     industries2019[element.nom_industrie.replace(/\s+/g, ' ').trim()] = element.emploi_arrondi_2018
     industries2023[element.nom_industrie.replace(/\s+/g, ' ').trim()] = String(Math.round((element.emploi_arrondi_2018 * (1 + (element.Taux_de_croissance_annuel_moyen_2019_2023 / 100)))))
   })

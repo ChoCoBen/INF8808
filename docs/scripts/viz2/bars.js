@@ -1,16 +1,18 @@
+import * as axis from './axis2.js'
+import * as scales from './scales.js'
 import * as legend from './legend.js'
 import * as viz2 from './viz2.js'
 
 /**
- * Draws the circles in the graph
+ * Draws the bars in the graph
  *
- * @param {*} g the graph where the circle has to be drawn
- * @param {Array} ind the data
+ * @param {*} g the graph where the bar has to be drawn
+ * @param {Array} ind the data that are used to draw the barss
  * @param {*} xScale the scale to place the circle at the good widht
  * @param {*} yScale the scale to place the circle at the good height
- * @param tip
- * @param colors
- * @param graphSize
+ * @param {*} tip the tip
+ * @param {Array} colors color used to color the bars
+ * @param {*} graphSize dimension of the graph
  */
 export function drawBars (g, ind, xScale, yScale, tip, colors, graphSize) {
   const keys = Object.keys(ind[0]).slice(1)
@@ -25,31 +27,33 @@ export function drawBars (g, ind, xScale, yScale, tip, colors, graphSize) {
     .data(function (d) { return d })
     .enter()
     .append('rect')
-    .attr('class', 'square')
     .attr('x', function (d) { return xScale(d.data.year) + 25 })
     .attr('y', function (d) { return yScale(d[1]) })
 
     .attr('height', function (d) { return yScale(d[0]) - yScale(d[1]) })
     .attr('width', 100)
+    .attr('class', 'rec')
     .on('mouseover', tip.show)
     .on('mouseout', tip.hide)
     .on('click', (d) => {
       tip.hide()
-      test(g, d, ind, colors, graphSize, xScale, yScale, tip)
+      detail(g, d, ind, colors, graphSize, xScale, tip)
     })
 }
 
 /**
- * @param g
- * @param d
- * @param ind
- * @param colors
- * @param graphSize
- * @param xScale
- * @param yScale
- * @param tip
+ * Draws the bars of the data of the clicked element
+ *
+ * @param {*} g the graph where the bar has to be drawn
+ * @param {*} d data from the click
+ * @param {Array} ind the data that are used to draw the barss
+ * @param {Array} colors color used to color the bars
+ * @param {*} graphSize dimension of the graph
+ * @param {*} xScale the scale to place the circle at the good widht
+ * @param {*} tip for the tooltip
  */
-export function test (g, d, ind, colors, graphSize, xScale, yScale, tip) {
+export function detail (g, d, ind, colors, graphSize, xScale, tip) {
+  setClickHandler(g, graphSize)
   const keys = Object.keys(ind[0])
   const val = d[1] - d[0]
   const idx = Object.values(d.data).indexOf(val)
@@ -64,10 +68,10 @@ export function test (g, d, ind, colors, graphSize, xScale, yScale, tip) {
   const k = [keys[idx]]
   var stackedData = d3.stack()
     .keys(k)(singleStack)
-  g.selectAll('.square').remove()
+  g.selectAll('.rec').remove()
   g.selectAll('.legend').remove()
-
-  setClickHandler(g, graphSize)
+  const yScale = scales.setAdaptedYScale(graphSize.height, d[1] - d[0])
+  axis.drawYAxis(yScale, graphSize.height)
   legend.drawLegend(colors, g, graphSize.width)
   g.selectAll('g.bars')
     .data(stackedData)
@@ -78,19 +82,20 @@ export function test (g, d, ind, colors, graphSize, xScale, yScale, tip) {
     .data(function (d) { return d })
     .enter()
     .append('rect')
-    .attr('class', 'square')
     .attr('x', function (d) { return xScale(d.data.year) + 25 })
     .attr('y', function (d) { return yScale(d[1]) })
-
     .attr('height', function (d) { return yScale(d[0]) - yScale(d[1]) })
     .attr('width', 100)
+    .attr('class', 'rec')
     .on('mouseover', tip.show)
     .on('mouseout', tip.hide)
 }
 
 /**
- * @param {*} g the graph
- * @param {*} graphSize object containing every size of the graph
+ * Handle the reset button
+ *
+ * @param {*} g the graph where the circle has to be drawn
+ * @param {*} graphSize dimension of the graph
  */
 export function setClickHandler (g, graphSize) {
   d3.select('.button22')

@@ -29,6 +29,7 @@ import * as viz3 from './scripts/viz3/viz3.js'
   helper.setCanvasSize(svgSize.width, svgSize.height)
 
   setClickHandler(g)
+  helper.addFooter(g)
 
   /**
    *   This function handles the graph's sizing.

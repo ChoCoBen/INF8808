@@ -16,6 +16,12 @@ import d3Tip from 'd3-tip'
  */
 export function build (g, graphSize) {
   g.selectAll('*').remove()
+  helper.addFooter(g)
+
+  g.append('text').text('Distribution des emplois par genre de compétences')
+    .attr('x', graphSize.width / 2)
+    .attr('y', -75)
+    .attr('class', 'vizTitle')
 
   var width = graphSize.width - 220
 
@@ -42,6 +48,8 @@ export function build (g, graphSize) {
       axis.drawXAxis(xScale, graphSize.height)
       axis.drawYAxis(yScale)
       axis.rotateXTicks()
+
+      addLine(g, xScale, skills, graphSize.height)
 
       bubble.drawBubble(g, data2021, xScale, yScale, radiusScale, colorScale)
       tooltip.setCircleHoverHandler(tip)
@@ -116,4 +124,26 @@ export function drawResetButton (g, width, data, xScale, yScale, radiusScale, co
     tooltip.setCircleHoverHandler(tip)
     legend.drawYearLegend(g, width)
   })
+}
+
+/**
+ * Add line in X to distinguish easily the skills
+ *
+ * @param {*} g the graph
+ * @param {*} xScale the scale in x for the graph
+ * @param {*} skills the list of skills
+ * @param {number} height the height of the graph
+ */
+export function addLine (g, xScale, skills, height) {
+  g.selectAll('rect')
+    .data(skills)
+    .enter()
+    .append('rect')
+    .attr('fill', 'grey')
+    .attr('x', function (d) {
+      return xScale(d) + (xScale.bandwidth() / 2)
+    })
+    .attr('width', 1)
+    .attr('height', height)
+    .style('opacity', 0.4)
 }

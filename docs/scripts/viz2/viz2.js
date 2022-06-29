@@ -5,16 +5,24 @@ import * as tooltip from './tooltip.js'
 import * as legend from './legend.js'
 import * as bars from './bars.js'
 import * as button from './button.js'
+import * as helper from '../helper.js'
 import d3Tip from 'd3-tip'
 
 /**
  * Build the second vizualisation
  *
  * @param {*} g the d3 selection of the graph
- * @param graphSize
+ * @param {*} graphSize the dimension of the graph
  */
 export function build (g, graphSize) {
   g.selectAll('*').remove()
+  helper.addFooter(g)
+
+  g.append('text').text("Évolution de l'offre d'emploi par industrie")
+    .attr('x', graphSize.width / 2)
+    .attr('y', -75)
+    .attr('class', 'vizTitle')
+
   button.drawButtons(g)
 
   axis.appendAxes(g)
@@ -29,7 +37,7 @@ export function build (g, graphSize) {
 
       const xScale = scales.setXScale()
       const yScale = scales.setYScale(graphSize.height, ind)
-      var colors = ['#0048BA', '#3B7A57', '#665D1E', '#9F2B68', '#FBCEB1', '#89CFF0']
+      var colors = ['#0048BA', '#3B7A57', '#FDEE00', '#9F2B68', '#FBCEB1', '#89CFF0']
       legend.drawLegend(colors, g, graphSize.width)
       axis.drawXAxis(xScale, graphSize.height)
       axis.drawYAxis(yScale, graphSize.height)

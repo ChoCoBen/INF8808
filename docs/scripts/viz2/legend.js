@@ -1,12 +1,21 @@
 /**
  * Draws the legend.
  *
- * @param {*} colorScale The color scale to use
- * @param colors
+ * @param {*} colors The color scale to use
  * @param {*} g The d3 Selection of the graph's g SVG element
  * @param {number} width The width of the graph, used to place the legend
  */
 export function drawLegend (colors, g, width) {
+  g.append('text')
+    .text('Cliquez sur les barres pour')
+    .attr('font-size', 12)
+    .attr('transform', 'translate(645 ,200)')
+
+  g.append('text')
+    .text('obtenir un affichage détaillé')
+    .attr('font-size', 12)
+    .attr('transform', 'translate(645,220)')
+
   var legend = g.selectAll('.legend')
     .data(colors)
     .enter().append('g')

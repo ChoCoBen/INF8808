@@ -1,18 +1,20 @@
 /**
- * Draws the buttons to choose the graph displayed.
+ * Draws the reset button
  *
- * @param {number} width The width of the svg, used to place the button
  * @param {*} g the graph
+ *
  */
 export function drawButtons (g) {
-  const button = g.append('g')
+  const button1 = g.append('g')
     .attr('class', 'button22')
     .attr('id', 'button22')
-    .attr('transform', 'translate(651, 130)')
+    .attr('transform', 'translate(640, 140)')
     .attr('width', 130)
     .attr('height', 25)
 
-  button.append('rect')
+  const buttons = d3.selectAll('.button22 ')
+
+  buttons.append('rect')
     .attr('width', 130)
     .attr('height', 30)
     .attr('fill', '#f4f6f4')
@@ -23,11 +25,11 @@ export function drawButtons (g) {
       d3.select(this).attr('stroke', '#f4f6f4')
     })
 
-  designButtons(button, 'Reset')
+  designButtons(button1, 'Reset')
 }
 
 /**
- * Sets the appearance of the buttons
+ * Sets the appearance of the button
  *
  * @param {*} button The d3 selection for the button
  * @param {string} text The text to put in the button

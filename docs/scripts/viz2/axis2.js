@@ -49,5 +49,5 @@ export function drawXAxis (xScale, height) {
  */
 export function drawYAxis (yScale) {
   d3.select('.y-axis')
-    .call(d3.axisLeft(yScale).tickSizeOuter(0).tickArguments([5, '.0r']))
+    .call(d3.axisLeft(yScale).tickSizeOuter(0))
 }

@@ -1,7 +1,7 @@
 body {
     font-family: 'Arial', 'sans-serif';
     font-size: 16px;
-    background-color: #CAD5CA;
+    background-color: #becbbe;
     color: #362023;
     margin: 0;
     height: 100vh;
@@ -76,4 +76,15 @@ svg {
 
 .titleTooltip {
     color: gold
+}
+
+.vizTitle {
+    font-size: 32px;
+    text-anchor: middle;
+    font-family: 'Times', 'serif';
+    font-weight: 550;
+}
+
+.footer {
+    font-size: x-small;
 }

@@ -66,9 +66,9 @@ export function drawButtons (width) {
       d3.select(this).attr('stroke', '#f4f6f4')
     })
 
-  designButtons(button1, 'Viz 1')
-  designButtons(button2, 'Viz 2')
-  designButtons(button3, 'Viz 3')
+  designButtons(button1, "Géographie de l'emploi")
+  designButtons(button2, "Evolution de l'emploi")
+  designButtons(button3, 'Niveau de qualification')
 }
 
 /**
@@ -87,4 +87,28 @@ export function designButtons (button, text) {
     .text(text)
     .attr('font-size', '10px')
     .attr('fill', '#362023')
+}
+
+/**
+ * Add the footer where we can find the link of the data
+ *
+ * @param {*} g the graph
+ */
+export function addFooter (g) {
+  g.append('text')
+    .text('Lien vers le site des données:')
+    .attr('class', 'footer')
+    .attr('transform', 'translate(100, 540)')
+
+  g.append('text')
+    .text('https://www.donneesquebec.ca/recherche/dataset/perspective-d-emploi-par-industrie-2021-2025')
+    .attr('class', 'footer')
+    .attr('transform', 'translate(100, 555)')
+    .attr('fill', 'blue')
+
+  g.append('text')
+    .text('https://www.donneesquebec.ca/recherche/dataset/perspective-d-emploi-par-profession-2021-2025')
+    .attr('class', 'footer')
+    .attr('transform', 'translate(100, 570)')
+    .attr('fill', 'blue')
 }

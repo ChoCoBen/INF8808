@@ -8,11 +8,24 @@ export function setXScale () {
 }
 
 /**
- * Defines the log scale used to position the center of the circles in Y.
+ * Defines the scale used to position the bars in Y.
  *
- * @param height
+ * @param {*} height height of the graph
  * @returns {*} The linear scale in Y
  */
 export function setYScale (height) {
-  return d3.scaleLinear().range([0, height]).domain([5000000, 0])
+  return d3.scaleLinear().range([0, height]).domain([5500000, 0])
+}
+
+/**
+ * Defines the scale used to position the bar when one click on it
+ *
+ * @param {*} height height of the graph
+ * @param {*} val value of the clicked element
+ * @returns {*} The linear scale in Y
+ */
+export function setAdaptedYScale (height, val) {
+  const v = String(val).length - 1
+  const dam = Math.ceil(val / 10 ** v) * 10 ** v
+  return d3.scaleLinear().range([0, height]).domain([dam, 0])
 }
