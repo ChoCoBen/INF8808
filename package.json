@@ -11,6 +11,7 @@
   "author": "Corentin Paulo Vincent",
   "license": "UNLICENSED",
   "dependencies": {
+    "@types/d3": "^7.4.0",
     "d3": "^5.16.0",
     "d3-geo": "^1.12.1",
     "d3-svg-legend": "^2.25.6",
