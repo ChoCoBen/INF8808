@@ -1,6 +1,6 @@
-import * as colorbar from './colorbar'
-import * as preprocess from './preprocess1'
-import * as viz1 from './viz1'
+import * as colorbar from './colorbar.js'
+import * as preprocess from './preprocess1.js'
+import * as viz1 from './viz1.js'
 
 /**
  * Draws the map base of Quebec province.

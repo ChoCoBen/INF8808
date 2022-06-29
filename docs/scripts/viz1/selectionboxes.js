@@ -1,5 +1,5 @@
-import * as preprocess from './preprocess1'
-import * as map from './map'
+import * as preprocess from './preprocess1.js'
+import * as map from './map.js'
 
 /**
  * @param {*} graph SVG element to draw on

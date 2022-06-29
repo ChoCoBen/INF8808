@@ -1,4 +1,4 @@
-import * as viz1 from './viz1'
+import * as viz1 from './viz1.js'
 
 /**
  * @param {*} graph SVG graph object
