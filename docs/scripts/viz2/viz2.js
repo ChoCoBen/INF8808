@@ -6,7 +6,7 @@ import * as legend from './legend.js'
 import * as bars from './bars.js'
 import * as button from './button.js'
 import * as helper from '../helper.js'
-import d3Tip from '../../../node_modules/d3-tip/index.js'
+import d3Tip from '../../node_modules/d3-tip/index.js'
 
 /**
  * Build the second vizualisation

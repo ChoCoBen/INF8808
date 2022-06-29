@@ -3531,7 +3531,7 @@ var button = _interopRequireWildcard(require("./button.js"));
 
 var helper = _interopRequireWildcard(require("../helper.js"));
 
-var _index = _interopRequireDefault(require("../../../node_modules/d3-tip/index.js"));
+var _index = _interopRequireDefault(require("../../../../INF8808/node_modules/d3-tip/index.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3572,7 +3572,7 @@ function build(g, graphSize) {
     });
   });
 }
-},{"./preprocess2.js":"scripts/viz2/preprocess2.js","./axis2.js":"scripts/viz2/axis2.js","./scales.js":"scripts/viz2/scales.js","./tooltip.js":"scripts/viz2/tooltip.js","./legend.js":"scripts/viz2/legend.js","./bars.js":"scripts/viz2/bars.js","./button.js":"scripts/viz2/button.js","../helper.js":"scripts/helper.js","../../../node_modules/d3-tip/index.js":"../node_modules/d3-tip/index.js"}],"scripts/viz3/preprocess3.js":[function(require,module,exports) {
+},{"./preprocess2.js":"scripts/viz2/preprocess2.js","./axis2.js":"scripts/viz2/axis2.js","./scales.js":"scripts/viz2/scales.js","./tooltip.js":"scripts/viz2/tooltip.js","./legend.js":"scripts/viz2/legend.js","./bars.js":"scripts/viz2/bars.js","./button.js":"scripts/viz2/button.js","../helper.js":"scripts/helper.js","../../../../INF8808/node_modules/d3-tip/index.js":"../node_modules/d3-tip/index.js"}],"scripts/viz3/preprocess3.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
