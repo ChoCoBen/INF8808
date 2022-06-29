@@ -1,5 +1,5 @@
 import * as preprocess from './preprocess1.js'
-import * as colorbar from './colorbar.JS'
+import * as colorbar from './colorbar.js'
 import * as selectionboxes from './selectionboxes.js'
 import * as map from './map.js'
 import * as helper from '../helper.js'
