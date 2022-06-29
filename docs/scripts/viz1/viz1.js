@@ -1,7 +1,7 @@
-import * as preprocess from './preprocess1'
-import * as colorbar from './colorbar'
-import * as selectionboxes from './selectionboxes'
-import * as map from './map'
+import * as preprocess from './preprocess1.js'
+import * as colorbar from './colorbar.JS'
+import * as selectionboxes from './selectionboxes.js'
+import * as map from './map.js'
 import * as helper from '../helper.js'
 
 const colorMin = '#ffffff'
