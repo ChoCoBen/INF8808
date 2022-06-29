@@ -6,8 +6,6 @@ import * as tooltip from './tooltip.js'
 import * as legend from './legend.js'
 import * as helper from '../helper.js'
 
-import d3Tip from '/node_modules/d3-tip/index.js'
-
 /**
  * Build the third vizualisation
  *
