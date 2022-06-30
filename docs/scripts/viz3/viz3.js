@@ -26,8 +26,8 @@ export function build (g, graphSize) {
   const tip = d3.tip().attr('class', 'd3-tip').html(function (d) { return tooltip.getContents(d) })
   g.call(tip)
 
-  d3.csv('./par_profession_2019.csv').then((data2019) => {
-    d3.csv('./par_profession_2021.csv').then((data2021) => {
+  d3.csv('/assets/data/par_profession_2019.csv').then((data2019) => {
+    d3.csv('/assets/data/par_profession_2021.csv').then((data2021) => {
       data2019 = preprocess.filterRegion(data2019)
       data2021 = preprocess.filterRegion(data2021)
 
