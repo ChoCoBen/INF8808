@@ -28,8 +28,8 @@ export function build (g, graphSize) {
   axis.appendGraphLabels(g)
   const tip = d3.tip().attr('class', 'd3-tip').html(function (d) { return tooltip.getContents(d) })
   d3.select('g').call(tip)
-  d3.csv('/assets/data/par_industrie_2019.csv').then((data2019) => {
-    d3.csv('/assets/data/par_industrie_2021.csv').then((data2021) => {
+  d3.csv('assets/data/par_industrie_2019.csv').then((data2019) => {
+    d3.csv('assets/data/par_industrie_2021.csv').then((data2021) => {
       const data1 = preprocess.filterRegion(data2019)
       const data2 = preprocess.filterRegion(data2021)
       const ind = preprocess.getIndustries(data1, data2)

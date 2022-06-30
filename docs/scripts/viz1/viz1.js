@@ -24,9 +24,9 @@ export function build (g, graphSize) {
     .attr('x', graphSize.width / 2)
     .attr('y', -75)
     .attr('class', 'vizTitle')
-  d3.csv('/assets/data/par_industrie_2019.csv').then((data2019) => {
-    d3.csv('/assets/data/par_industrie_2021.csv').then((data2021) => {
-      d3.json('/assets/data/quebec_regions.geojson').then((mapData) => {
+  d3.csv('assets/data/par_industrie_2019.csv').then((data2019) => {
+    d3.csv('assets/data/par_industrie_2021.csv').then((data2021) => {
+      d3.json('assets/data/quebec_regions.geojson').then((mapData) => {
         var industry = 'Total'
         var year = 2018
         data2019 = preprocess.adjustIndustryNames(data2019)
