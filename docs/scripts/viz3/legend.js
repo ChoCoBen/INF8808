@@ -1,4 +1,3 @@
-
 /**
  * Draws the legend.
  *
@@ -11,7 +10,7 @@ export function drawLegend (colorScale, g, width) {
     .attr('class', 'legendOrdinal')
     .attr('transform', 'translate(' + width + ',0)')
 
-  var legendOrdinal = d3Legend.legendColor()
+  var legendOrdinal = d3.legendColor()
     .shape('path', d3.symbol().type(d3.symbolCircle).size(200)())
     .shapePadding(10)
     .cellFilter(function (d) { return d.label !== 'e' })
