@@ -26,7 +26,7 @@ export function build (g, graphSize) {
 
   axis.appendAxes(g)
   axis.appendGraphLabels(g)
-  const tip = d3Tip().attr('class', 'd3-tip').html(function (d) { return tooltip.getContents(d) })
+  const tip = d3.tip().attr('class', 'd3-tip').html(function (d) { return tooltip.getContents(d) })
   d3.select('g').call(tip)
   d3.csv('./par_industrie_2019.csv').then((data2019) => {
     d3.csv('./par_industrie_2021.csv').then((data2021) => {
